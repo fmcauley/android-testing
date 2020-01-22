@@ -72,11 +72,9 @@ class StatisticsUtilsTest {
 
     @Test
     fun getActiveAndCompleteStats_error_returnZero() {
-        // Create the empty list
-        val tasks = null
 
-        // Call the Code Under Test
-        val result = getActiveAndCompletedStats(tasks)
+        // Code Under Test
+        val result = getActiveAndCompletedStats(null)
 
         // Check the result
         assertThat(result.activeTasksPercent, `is`(0f))
