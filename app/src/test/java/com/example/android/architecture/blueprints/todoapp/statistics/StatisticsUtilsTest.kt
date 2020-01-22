@@ -24,7 +24,7 @@ class StatisticsUtilsTest {
     }
 
     @Test
-    fun getActiveAndCompleteStats_oneComplete_returnZeroHundred(){
+    fun getActiveAndCompleteStats_oneComplete_returnZeroHundred() {
 
         // Create a task that is complete
         val tasks = listOf<Task>(
@@ -39,7 +39,7 @@ class StatisticsUtilsTest {
     }
 
     @Test
-    fun getActiveAndCompleteStats_twoCompleteAndThreeActive_returnFortySixty(){
+    fun getActiveAndCompleteStats_twoCompleteAndThreeActive_returnFortySixty() {
         // Create the needed tasks
         val tasks = listOf<Task>(
                 Task("title", "desc", isCompleted = true),
@@ -55,5 +55,18 @@ class StatisticsUtilsTest {
         // Check the result
         assertThat(result.completedTasksPercent, `is`(40f))
         assertThat(result.activeTasksPercent, `is`(60f))
+    }
+
+    @Test
+    fun getActiveAndCompleteStats_noTasks_returnZero() {
+        // Create the empty list
+        val tasks = listOf<Task>()
+
+        // Call the Code Under Test
+        val result = getActiveAndCompletedStats(tasks)
+
+        // Check the result
+        assertThat(result.activeTasksPercent, `is`(0f))
+        assertThat(result.completedTasksPercent, `is`(0f))
     }
 }
